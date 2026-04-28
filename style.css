@@ -1,0 +1,103 @@
+:root {
+  --mhp-blue: #002d5e;
+  --mhp-gold: #c5a059;
+  --mhp-white: #f4f4f4;
+  --mhp-dark: #1a1a1a;
+  --police-red: #b91d1d;
+}
+
+body {
+  background-color: var(--mhp-white);
+  font-family: 'Segoe UI', Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: var(--mhp-dark);
+}
+
+/* --- TACTICAL NAVIGATION --- */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--mhp-blue);
+  padding: 0 40px;
+  height: 90px;
+  border-bottom: 4px solid var(--mhp-gold);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-left { flex: 1; }
+.nav-logo { height: 65px; width: auto; }
+
+.nav-links { flex: 3; display: flex; justify-content: center; gap: 25px; }
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 1px;
+}
+.nav-links a:hover { color: var(--mhp-gold); }
+
+.nav-right { flex: 1; text-align: right; color: white; font-size: 11px; opacity: 0.8; }
+
+/* --- CONTAINERS & CARDS --- */
+.container {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.mhp-card {
+  background: white;
+  border-left: 8px solid var(--mhp-blue);
+  padding: 30px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+h1 {
+  font-family: 'Arial Black', sans-serif;
+  color: var(--mhp-blue);
+  text-transform: uppercase;
+  font-size: 35px;
+  letter-spacing: -1px;
+}
+
+.event-tag {
+  background: var(--mhp-gold);
+  color: var(--mhp-blue);
+  padding: 4px 10px;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-bottom: 10px;
+}
+
+/* --- INPUTS --- */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.btn-mhp {
+  background: var(--mhp-blue);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  margin-top: 15px;
+}
+
+.btn-mhp:hover { background: var(--mhp-gold); color: var(--mhp-blue); }

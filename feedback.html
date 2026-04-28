@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>MHP | Feedback & Reporting</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html"><img src="Logo.png" alt="MHP Logo" class="nav-logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Announcements</a>
+            <a href="database.html">Database</a>
+            <a href="coc.html">Chain of Command</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="supervisors.html" style="color: var(--mhp-gold);">Supervisors Only</a>
+        </div>
+        <div class="nav-right">MONTANA STATE GOV PORTAL</div>
+    </nav>
+
+    <div class="container">
+        <div id="feedbackForm">
+            <h1>Official Feedback Report</h1>
+            <div class="mhp-card">
+                <h3>Personnel Information</h3>
+                <p style="font-size: 14px; color: #666;">Provide the details of the Trooper involved in the interaction.</p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                    <input type="text" id="trooperCallsign" placeholder="Trooper Callsign (e.g. 1-A-12)">
+                    <input type="text" id="trooperUser" placeholder="Username / Discord Name">
+                </div>
+
+                <h3 style="margin-top: 30px;">Performance Rating</h3>
+                <div class="stars-input" style="display: flex; flex-direction: row-reverse; justify-content: center; font-size: 40px; margin: 10px 0;">
+                    <input type="radio" name="star" id="star5" value="5"><label for="star5" style="cursor:pointer; color:#ccc;">★</label>
+                    <input type="radio" name="star" id="star4" value="4"><label for="star4" style="cursor:pointer; color:#ccc;">★</label>
+                    <input type="radio" name="star" id="star3" value="3"><label for="star3" style="cursor:pointer; color:#ccc;">★</label>
+                    <input type="radio" name="star" id="star2" value="2"><label for="star2" style="cursor:pointer; color:#ccc;">★</label>
+                    <input type="radio" name="star" id="star1" value="1"><label for="star1" style="cursor:pointer; color:#ccc;">★</label>
+                </div>
+
+                <h3>Reason for Feedback</h3>
+                <textarea id="userMessage" rows="6" placeholder="Provide a detailed reason for this report..."></textarea>
+                
+                <button onclick="submitFeedback()" class="btn-mhp" style="width: 100%; margin-top: 20px;">SUBMIT TO COMMAND</button>
+            </div>
+        </div>
+
+        <div id="thankYouSection" style="display: none; text-align: center; margin-top: 50px;">
+            <div class="mhp-card" style="border-left: none; border-top: 8px solid var(--mhp-gold);">
+                <h1 style="font-size: 45px; margin-bottom: 10px;">✔ SUBMISSION RECEIVED</h1>
+                <p style="font-size: 18px; font-weight: bold; color: var(--mhp-blue);">Thank you for your feedback!</p>
+                <p>Your report has been successfully encrypted and transmitted to the Montana Highway Patrol High Command. We appreciate your contribution to the department's integrity.</p>
+                
+                <hr style="border: 1px solid #eee; margin: 25px 0;">
+                
+                <p style="font-style: italic; color: #666; font-size: 14px;">The command staff has been notified of your feedback.</p>
+                
+                <a href="index.html" class="btn-mhp" style="text-decoration: none; display: inline-block; margin-top: 20px;">RETURN TO PORTAL</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function submitFeedback() {
+            const callsign = document.getElementById('trooperCallsign').value;
+            const discord = document.getElementById('trooperUser').value;
+            const msg = document.getElementById('userMessage').value;
+            const rating = document.querySelector('input[name="star"]:checked');
+
+            // --- THE BOUNCER (Safety Check) ---
+            const badWords = ["badword1", "badword2"]; 
+            const fullText = (callsign + " " + discord + " " + msg).toLowerCase();
+
+            if (badWords.some(word => fullText.includes(word))) {
+                document.body.innerHTML = `
+                    <div style="background-color: black; color: #ff0000; height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; font-family: 'Arial Black', sans-serif; padding: 20px;">
+                        <h1 style="font-size: clamp(40px, 8vw, 80px);">🚫 TERMINAL REVOKED 🚫</h1>
+                        <p style="font-size: 24px; color: white; max-width: 800px;">Your session has been terminated due to a violation of communication policy. Internal Affairs has been notified.</p>
+                    </div>`;
+                return;
+            }
+
+            // --- VALIDATION ---
+            if(!callsign || !discord || !msg || !rating) {
+                alert("ERROR: Missing Required Fields. All documentation must be complete.");
+                return;
+            }
+
+            // --- SAVE TO LOCALSTORAGE (For Supervisors) ---
+            let logs = JSON.parse(localStorage.getItem('mhpFeedback')) || [];
+            logs.push({
+                callsign: callsign,
+                user: discord,
+                stars: parseInt(rating.value),
+                reason: msg
+            });
+            localStorage.setItem('mhpFeedback', JSON.stringify(logs));
+
+            // --- SWAP CONTENT (The "Thank You" logic) ---
+            document.getElementById('feedbackForm').style.display = 'none';
+            document.getElementById('thankYouSection').style.display = 'block';
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>MHP | Secure Database</title>
+    <style>
+        #databaseContent { display: none; }
+        
+        /* Tactical Link Styling */
+        .db-link {
+            color: var(--mhp-blue);
+            text-decoration: none;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .db-link:hover {
+            color: var(--mhp-gold);
+            transform: translateX(10px);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html"><img src="Logo.png" alt="MHP Logo" class="nav-logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Announcements</a>
+            <a href="database.html">Database</a>
+            <a href="coc.html">Chain of Command</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="supervisors.html" style="color: var(--mhp-gold);">Supervisors Only</a>
+        </div>
+        <div class="nav-right">MONTANA STATE GOV PORTAL</div>
+    </nav>
+
+    <div id="loginGate" class="container" style="text-align: center; margin-top: 80px;">
+        <h1>🔐 MHP Mainframe Access</h1>
+        <div class="mhp-card">
+            <p id="gateMessage">Enter Authorized Personnel Access Code:</p>
+            <input type="password" id="accessCode" placeholder="Access Code..." style="max-width: 300px; text-align: center;">
+            <br><br>
+            <button id="authBtn" onclick="verifyAccess()" class="btn-mhp">VERIFY IDENTITY</button>
+        </div>
+    </div>
+
+    <div id="databaseContent" class="container">
+        <h1>Department Database</h1>
+        
+        <div class="mhp-card">
+            <h3>Departmental Resources & Policies</h3>
+            <p>Select a file to view the official Montana Highway Patrol documentation:</p>
+            
+            <ul style="line-height: 2.5; font-weight: bold; list-style-type: '> ';">
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/spreadsheets/d/1W5MjBgkUQb2WdOITUYwg92BMD7iJm9JDyH-Vrb_5pwU/edit?usp=sharing">Personnel Database</a></li>
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/spreadsheets/d/1WE0Jk53biaD45g-q2r7G13CM5AmC7kCYR37dBsJHIZE/edit">Updated Vehicle Roster</a></li>
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/document/d/14W8nvrbLj_FjkdY0KmsXWE6i2QefYuX7R6mm0SQPvW0/edit?tab=t.0">Uniform Structure Policy</a></li>
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/document/d/1Zuw8iwX8LFcL7mWkDIxKuNaeH-fhQ3xYvYYrahOK3p0/edit?tab=t.0">Pursuit Policy/Guide</a></li>
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/document/d/1NQUhKAxI6A9wc09TmJzYjiO1ePMtIeknW3g1YFX_KBI/edit?g&tab=t.0#heading=h.l5dveuig2zpr">Standard Operating Procedure's</a></li>
+                <li><a class="db-link" target="_blank" href="https://docs.google.com/document/d/1ZXSmmxvruSP6khHcK5tbkbZqG9E8dXgScyOB5PPrLdk/edit?tab=t.0#heading=h.fvjoguxiisp">State Statutes</a></li>
+            </ul>
+        </div>
+
+        <div class="mhp-card" style="border-left-color: var(--mhp-gold);">
+            <h3>System Status: <span style="color: green;">ONLINE</span></h3>
+            <p>Ensure all information viewed remains confidential. Unauthorized sharing is a violation of State Law.</p>
+        </div>
+    </div>
+
+    <script>
+        function verifyAccess() {
+            const input = document.getElementById('accessCode');
+            const btn = document.getElementById('authBtn');
+            const msg = document.getElementById('gateMessage');
+
+            if (input.value === "0337572") {
+                document.getElementById('loginGate').style.display = "none";
+                document.getElementById('databaseContent').style.display = "block";
+            } else {
+                alert("INVALID ACCESS CODE. SYSTEM LOCKING...");
+                input.disabled = true;
+                btn.disabled = true;
+                btn.style.background = "#444";
+                btn.style.cursor = "not-allowed";
+                msg.innerHTML = "<b style='color:red;'>⚠️ UNAUTHORIZED ACCESS DETECTED. TERMINAL DISABLED. REFRESH TO RE-AUTHENTICATE.</b>";
+                input.value = "";
+            }
+        }
+    </script>
+</body>
+</html>

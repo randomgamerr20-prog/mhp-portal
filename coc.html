@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>MHP | Chain of Command</title>
+    <style>
+        .rank-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .unit-divider {
+            border-top: 2px dashed var(--mhp-gold);
+            margin: 40px 0;
+            position: relative;
+        }
+        .unit-label {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--mhp-white);
+            padding: 0 20px;
+            color: var(--mhp-blue);
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .rank-card {
+            background: white;
+            border-bottom: 4px solid var(--mhp-blue);
+            padding: 15px;
+            margin: 10px auto;
+            max-width: 400px;
+            font-weight: bold;
+            font-size: 18px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .rank-card:hover {
+            transform: scale(1.03);
+            border-bottom-color: var(--mhp-gold);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html"><img src="Logo.png" alt="MHP Logo" class="nav-logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Announcements</a>
+            <a href="database.html">Database</a>
+            <a href="coc.html">Chain of Command</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="supervisors.html" style="color: var(--mhp-gold);">Supervisors Only</a>
+        </div>
+        <div class="nav-right">MONTANA STATE GOV PORTAL</div>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align: center;">Chain of Command</h1>
+
+        <div class="rank-section">
+            <div class="rank-card" style="border-left: 10px solid var(--mhp-gold);">Colonel</div>
+            <div class="rank-card" style="border-left: 10px solid var(--mhp-gold);">Lt. Colonel</div>
+        </div>
+
+        <div class="unit-divider"><span class="unit-label">Senior High Command</span></div>
+
+        <div class="rank-section">
+            <div class="rank-card">Major</div>
+            <div class="rank-card">Captain</div>
+        </div>
+
+        <div class="unit-divider"><span class="unit-label">Executive Command</span></div>
+
+        <div class="rank-section">
+            <div class="rank-card">Lieutenant</div>
+            <div class="rank-card">First Sergeant</div>
+            <div class="rank-card">Sergeant</div>
+        </div>
+
+        <div class="unit-divider"><span class="unit-label">Supervisor Units</span></div>
+
+        <div class="rank-section">
+            <div class="rank-card">Corporal</div>
+            <div class="rank-card">Senior Trooper</div>
+            <div class="rank-card">Trooper First Class</div>
+            <div class="rank-card">Trooper</div>
+        </div>
+
+        <div class="unit-divider"><span class="unit-label">Patrol Unit</span></div>
+
+        <div class="rank-section">
+            <div class="rank-card">Trooper-Trainee</div>
+            <div class="rank-card">Cadet</div>
+        </div>
+
+        <div class="unit-divider"><span class="unit-label">Probationary Unit</span></div>
+
+    </div>
+</body>
+</html>

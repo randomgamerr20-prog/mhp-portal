@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>MHP | Announcements</title>
+    <style>
+        .announcement-banner-container {
+            text-align: center;
+            margin: 40px 0; /* Space above and below the image */
+            perspective: 1000px;
+        }
+
+        .announcement-img {
+            width: 100%;
+            max-width: 900px;
+            border: 4px solid var(--mhp-gold);
+            border-radius: 15px;
+            transition: all 0.5s ease-in-out;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: block;
+            margin: 0 auto;
+        }
+
+        /* Hover: Largen, Blue border, and Roundy edges */
+        .announcement-img:hover {
+            transform: scale(1.05); 
+            border-color: #0056b3; 
+            box-shadow: 0 10px 30px rgba(0, 86, 179, 0.4); 
+            border-radius: 50px; /* Extra roundy on hover */
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="index.html"><img src="mhp_logo.png" alt="MHP Logo" class="nav-logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Announcements</a>
+            <a href="database.html">Database</a>
+            <a href="coc.html">Chain of Command</a>
+            <a href="feedback.html">Feedback</a>
+            <a href="supervisors.html" style="color: var(--mhp-gold);">Supervisors Only</a>
+        </div>
+        <div class="nav-right">MONTANA STATE GOV PORTAL</div>
+    </nav>
+
+    <div class="container">
+        <h1 style="text-align: center;">Department Announcements</h1>
+        
+        <div class="mhp-card">
+            <div class="event-tag">UPCOMING EVENT</div>
+            <h3>No events at this time</h3>
+            <p>Check back later for department-wide operations and community events.</p>
+            <small><b>Location:</b> N/A | <b>Time:</b> N/A</small>
+        </div>
+
+        <div class="announcement-banner-container">
+            <img src="1.png" alt="MHP Department Photo" class="announcement-img">
+        </div>
+    </div>
+</body>
+</html>
